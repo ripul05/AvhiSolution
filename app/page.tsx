@@ -302,39 +302,80 @@ function HeroPlaceholder({
   y: MotionValue<number>;
 }) {
   return (
-    <div className="relative h-[36rem] overflow-hidden rounded-[2.6rem] border border-white/70 bg-white/46 shadow-[0_40px_140px_rgba(11,11,11,0.16)] backdrop-blur-2xl sm:h-[44rem] lg:absolute lg:inset-y-0 lg:left-0 lg:right-[-5vw] lg:h-auto">
+    <div className="relative h-[42rem] overflow-hidden rounded-[2rem] border border-white/70 bg-white/50 shadow-[0_40px_140px_rgba(11,11,11,0.16)] backdrop-blur-2xl sm:h-[48rem] lg:absolute lg:inset-y-0 lg:left-0 lg:right-[-5vw] lg:h-auto lg:rounded-[2.6rem]">
+      {/* Background */}
       <motion.div
         style={{ scale, y }}
-        className="absolute inset-0 rounded-[2.6rem] bg-[radial-gradient(circle_at_28%_24%,rgba(255,255,255,0.96),rgba(255,255,255,0.22)_28%,transparent_46%),radial-gradient(circle_at_74%_18%,rgba(14,79,255,0.2),transparent_34%),radial-gradient(circle_at_72%_78%,rgba(255,138,0,0.18),transparent_30%),linear-gradient(145deg,#F8FAFF,#ECEFF5_45%,#FFFFFF)]"
+        className="absolute inset-0 rounded-[2.6rem] bg-[radial-gradient(circle_at_28%_24%,rgba(255,255,255,0.96),rgba(255,255,255,0.22)_28%,transparent_46%),radial-gradient(circle_at_74%_18%,rgba(14,79,255,0.18),transparent_34%),radial-gradient(circle_at_72%_78%,rgba(255,138,0,0.16),transparent_30%),linear-gradient(145deg,#F8FAFF,#ECEFF5_45%,#FFFFFF)]"
       />
 
-      <div className="absolute inset-4 overflow-hidden rounded-[2rem] border border-black/8 bg-white/42">
+      <div className="absolute inset-4 overflow-hidden rounded-[2rem] border border-black/8 bg-white/40">
+
+        {/* Image Card */}
         <motion.div
           animate={{ y: [0, -16, 0], rotate: [0, -0.6, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[8%] top-[9%] h-[78%] w-[56%] rounded-[2.4rem] border border-white/70 bg-[linear-gradient(150deg,rgba(255,255,255,0.94),rgba(255,255,255,0.34))] shadow-[0_35px_110px_rgba(11,11,11,0.14)] backdrop-blur-2xl"
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute left-[6%] top-[5%] h-[46%] w-[88%] overflow-hidden rounded-[2rem] border border-white/70 bg-white shadow-[0_35px_110px_rgba(11,11,11,0.14)] backdrop-blur-xl sm:h-[52%] lg:left-[8%] lg:top-[9%] lg:h-[78%] lg:w-[56%] lg:rounded-[2.4rem]"
         >
-          <div className="absolute inset-x-12 top-12 h-3 rounded-full bg-dark/10" />
-          <div className="absolute bottom-14 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full border border-black/8 bg-[radial-gradient(circle,rgba(14,79,255,0.18),transparent_64%)]" />
+          {/* Browser Bar */}
+          <div className="absolute inset-x-0 top-0 z-20 flex h-10 items-center gap-2 border-b border-black/5 bg-white/80 px-5 backdrop-blur">
+            <div className="h-3 w-3 rounded-full bg-red-400" />
+            <div className="h-3 w-3 rounded-full bg-yellow-400" />
+            <div className="h-3 w-3 rounded-full bg-green-400" />
+          </div>
+
+          {/* Desktop Image */}
+          <div className="relative hidden h-full w-full lg:block">
+            <Image
+              src="/AvhiSolutionHome.png"
+              alt="AVHI Solutions Website"
+              fill
+              priority
+              className="object-cover object-top pt-10"
+            />
+          </div>
+
+          {/* Mobile Logo */}
+          <div className="relative flex h-full w-full items-center justify-center lg:hidden">
+            <Image
+              src="/AvhiSolutions.jpeg"
+              alt="AVHI Solutions"
+              width={280}
+              height={280}
+              priority
+              className="h-auto w-[70%] max-w-[260px] object-contain"
+            />
+          </div>
         </motion.div>
 
+        {/* Sensor Card */}
         <motion.div
           animate={{ y: [0, 18, 0], rotate: [0, 0.8, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[10%] right-[8%] h-[54%] w-[42%] rounded-[2rem] border border-black/8 bg-dark p-5 text-white shadow-[0_38px_120px_rgba(11,11,11,0.3)]"
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute bottom-6 left-1/2 w-[88%] -translate-x-1/2 rounded-[1.6rem] border border-white/10 bg-dark p-4 text-white shadow-[0_38px_120px_rgba(11,11,11,0.3)] sm:w-[80%] sm:p-5 lg:bottom-[10%] lg:left-auto lg:right-[8%] lg:h-[54%] lg:w-[42%] lg:translate-x-0 lg:rounded-[2rem]"
         >
-          <div className="mb-8 flex items-center justify-between">
+          <div className="mb-6 flex items-center justify-between">
             <span className="text-xs uppercase tracking-[0.22em] text-white/38">
-              Sensor suite
+              Sensor Suite
             </span>
+
             <Waves className="h-5 w-5 text-orange" />
           </div>
+
           <div className="space-y-3">
             {highlights.map((item, index) => (
               <div
                 key={item}
                 className={cn(
-                  "rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/70",
+                  "rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/70 transition-all",
                   index === 1 && "bg-blue text-white shadow-glass",
                 )}
               >
@@ -344,35 +385,49 @@ function HeroPlaceholder({
           </div>
         </motion.div>
 
-        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-white/90 via-white/52 to-transparent px-8 pb-8 pt-24">
+        {/* Bottom Caption */}
+        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-white/90 via-white/60 to-transparent px-6 pb-6 pt-24 lg:px-8 lg:pb-8">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-dark/38">
-              Image Placeholder Hero
-            </p>
-            <p className="mt-2 font-display text-3xl font-semibold tracking-[-0.06em]">
+            <p className="font-display text-xl font-semibold tracking-[-0.05em] sm:text-2xl lg:text-3xl">
               Premium washroom automation visual
             </p>
           </div>
-          <div className="hidden rounded-full border border-black/10 bg-white/70 px-4 py-2 text-xs font-medium text-dark/56 backdrop-blur-xl sm:block">
+
+          <div className="hidden rounded-full border border-black/10 bg-white/70 px-4 py-2 text-xs font-medium text-dark/60 backdrop-blur-xl lg:block">
             Scroll to zoom
           </div>
         </div>
       </div>
 
+      {/* Floating Blur Effects */}
       <motion.div
-        animate={{ opacity: [0.42, 0.78, 0.42], scale: [1, 1.08, 1] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-[13%] top-[12%] h-24 w-24 rounded-full bg-blue/16 blur-2xl"
+        animate={{
+          opacity: [0.4, 0.75, 0.4],
+          scale: [1, 1.08, 1],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute right-[13%] top-[12%] h-24 w-24 rounded-full bg-blue/15 blur-2xl"
       />
+
       <motion.div
-        animate={{ opacity: [0.35, 0.65, 0.35], scale: [1, 1.16, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[16%] left-[16%] h-28 w-28 rounded-full bg-orange/18 blur-2xl"
+        animate={{
+          opacity: [0.35, 0.65, 0.35],
+          scale: [1, 1.15, 1],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute bottom-[16%] left-[16%] h-28 w-28 rounded-full bg-orange/15 blur-2xl"
       />
     </div>
   );
 }
-
 function WhyAvhi() {
   return (
     <section id="solutions" className="relative px-5 py-24 sm:px-8 lg:px-12">

@@ -58,8 +58,10 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`transition-colors hover:text-dark ${
-                  isActive ? "text-dark font-semibold" : "text-dark/58"
+                className={`rounded-full px-3 py-2 transition-all duration-200 ${
+                  isActive
+                    ? "bg-dark text-white shadow-sm"
+                    : "text-dark/58 hover:bg-dark hover:text-white"
                 }`}
               >
                 {link.label}

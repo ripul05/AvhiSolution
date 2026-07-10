@@ -1,14 +1,38 @@
-import { ArrowUpRight, ShieldCheck, Sparkles, Wrench } from "lucide-react";
+"use client";
+
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  ArrowUpRight,
+  ImageIcon,
+  Radio,
+  Boxes,
+  Building2,
+  MapPinned,
+  Sparkles,
+} from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 
+/* ------------------------------------------------------------------ */
+/*  Content                                                           */
+/* ------------------------------------------------------------------ */
+
+const sectors = [
+  "Offices",
+  "Hotels",
+  "Hospitals",
+  "Airports",
+  "Malls",
+  "Industrial spaces",
+];
+
 const pillars = [
   {
     title: "Premium quality",
     description:
-      "We focus on durable, carefully finished washroom products that feel refined in every setting.",
+      "Durable, carefully finished washroom products that feel refined in every setting.",
   },
   {
     title: "Smart automation",
@@ -18,47 +42,218 @@ const pillars = [
   {
     title: "Reliable support",
     description:
-      "Our solutions are designed for long-term service, easy maintenance, and dependable performance.",
+      "Solutions designed for long-term service, easy maintenance, and dependable performance.",
   },
 ];
 
-const journey = [
+const timeline = [
   {
-    title: "Focused beginnings",
+    year: "2022",
+    tag: "Foundation",
+    title: "AVHI Solutions starts",
     description:
-      "AVHI Solutions started with a clear goal: make commercial washrooms smarter, cleaner, and easier to maintain.",
+      "AVHI begins with a narrow thesis: commercial hygiene hardware should feel as precise and considered as the buildings it goes into. The first sensor fittings ship to early clients in offices and hospitality.",
+    icon: Sparkles,
+    imageLabel: "Founding team / first product line",
   },
   {
-    title: "Broader reach",
+    year: "2023",
+    tag: "Range expansion",
+    title: "A complete sensor ecosystem",
     description:
-      "Our portfolio expanded into a full ecosystem of premium automation, hygiene, and support products for modern facilities.",
+      "The catalogue grows from individual fittings into a full ecosystem — sensor taps, flush valves, soap and sanitiser dispensers, and hand dryers — engineered to work together across a single washroom.",
+    icon: Boxes,
+    imageLabel: "Product ecosystem / catalogue shoot",
   },
   {
-    title: "Trusted by business",
+    year: "2024",
+    tag: "Commercial integration",
+    title: "From supply to full installation",
     description:
-      "Today, AVHI serves offices, hotels, hospitals, airports, malls, and industrial spaces with dependable solutions.",
+      "AVHI moves beyond supplying components to delivering integrated restroom systems — specified, installed, and serviced end to end for hospitality, healthcare, and public-facing buildings.",
+    icon: Building2,
+    imageLabel: "Installation / site work",
+  },
+  {
+    year: "2025",
+    tag: "National footprint",
+    title: "Pan-India growth",
+    description:
+      "Partnerships and service coverage extend across more cities, bringing AVHI systems to a wider range of commercial and industrial facilities nationwide.",
+    icon: MapPinned,
+    imageLabel: "Regional rollout / partner sites",
+  },
+  {
+    year: "2026",
+    tag: "Today",
+    title: "Built for what's next",
+    description:
+      "AVHI continues refining automation for high-traffic washrooms — the same focus as day one, applied to a growing list of offices, hotels, hospitals, airports, malls, and industrial facilities.",
+    icon: Radio,
+    imageLabel: "Current showroom / latest range",
   },
 ];
+
+/* ------------------------------------------------------------------ */
+/*  Scroll reveal (no external deps)                                  */
+/* ------------------------------------------------------------------ */
+
+function useReveal<T extends HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return { ref, visible };
+}
+
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
+      className={`transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0 ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Image placeholder — swap for next/image once real photos exist   */
+/* ------------------------------------------------------------------ */
+
+function ImagePlaceholder({ label }: { label: string }) {
+  return (
+    <div
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-dark/10 bg-[#F7F8FB]"
+      style={{
+        backgroundImage:
+          "radial-gradient(rgba(11,13,16,0.10) 1px, transparent 1px)",
+        backgroundSize: "18px 18px",
+      }}
+    >
+      {/*
+        Replace this block with:
+        <Image src="/images/about/2022.jpg" alt="..." fill className="object-cover" />
+      */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
+        <ImageIcon className="h-6 w-6 text-dark/25" strokeWidth={1.5} />
+        <p className="max-w-[14rem] text-[0.7rem] font-medium uppercase tracking-[0.14em] text-dark/35">
+          {label}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Timeline row                                                      */
+/* ------------------------------------------------------------------ */
+
+function TimelineRow({
+  item,
+  index,
+}: {
+  item: (typeof timeline)[number];
+  index: number;
+}) {
+  const reversed = index % 2 === 1;
+  const Icon = item.icon;
+
+  return (
+    <div className="relative">
+      {/* spine node — desktop only */}
+      <div className="absolute left-1/2 top-0 z-10 hidden -translate-x-1/2 md:block">
+        <div className="flex h-11 w-11 items-center justify-center rounded-full border border-dark/15 bg-white">
+          <Icon className="h-4 w-4 text-blue" strokeWidth={1.75} />
+        </div>
+      </div>
+
+      <div className="grid items-center gap-8 border-t border-dark/10 py-14 md:grid-cols-2 md:gap-24 md:py-24">
+        <div className={reversed ? "md:order-2" : ""}>
+          <Reveal delay={80}>
+            <ImagePlaceholder label={item.imageLabel} />
+          </Reveal>
+        </div>
+
+        <div className={reversed ? "md:order-1 md:text-right" : ""}>
+          <Reveal delay={160}>
+            <div
+              className={`flex items-center gap-3 md:hidden ${
+                reversed ? "justify-end" : ""
+              }`}
+            >
+              <Icon className="h-4 w-4 text-blue" strokeWidth={1.75} />
+            </div>
+            <p className="font-display text-6xl font-semibold leading-none tracking-[-0.04em] text-dark/12 sm:text-7xl">
+              {item.year}
+            </p>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-blue">
+              {item.tag}
+            </p>
+            <h3 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-[-0.04em] text-dark sm:text-3xl">
+              {item.title}
+            </h3>
+            <p className="mt-4 max-w-md text-[0.95rem] leading-7 text-dark/60 md:ml-auto md:[unset]">
+              {item.description}
+            </p>
+          </Reveal>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Page                                                               */
+/* ------------------------------------------------------------------ */
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white text-dark">
       <SiteHeader />
 
-      <section className="px-5 pb-24 pt-32 sm:px-8 lg:px-12 lg:pt-40">
-        <div className="mx-auto max-w-[92rem] rounded-[2.5rem] border border-black/8 bg-[linear-gradient(135deg,#FFFFFF_0%,#F7F8FB_100%)] p-8 shadow-[0_24px_100px_rgba(11,11,11,0.08)] sm:p-12 lg:p-16">
-          <div className="max-w-3xl">
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-blue">
-              About AVHI Solutions
+      {/* Hero */}
+      <section className="border-b border-dark/10 px-5 pb-16 pt-32 sm:px-8 lg:px-12 lg:pt-44">
+        <div className="mx-auto grid max-w-[92rem] gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue">
+              About AVHI Solutions — Since 2022
             </p>
-            <h1 className="font-display text-[clamp(3.2rem,6vw,5rem)] font-semibold leading-[0.9] tracking-[-0.07em]">
-              Delivering premium washroom automation with clarity and confidence.
+            <h1 className="mt-6 font-display text-[clamp(2.8rem,5.4vw,4.6rem)] font-semibold leading-[0.95] tracking-[-0.06em]">
+              Washroom automation, engineered with the same precision as the
+              spaces it serves.
             </h1>
-            <p className="mt-8 text-lg leading-8 text-dark/62 sm:text-xl">
-              AVHI Solutions is focused on modern commercial washroom experiences,
-              combining sensor-based automation, premium hygiene systems, and
-              dependable engineering for offices, hotels, hospitals, airports,
-              malls, and industrial spaces.
+            <p className="mt-8 max-w-xl text-lg leading-8 text-dark/60">
+              AVHI Solutions designs sensor-based washroom systems for
+              commercial buildings — combining touch-free hardware, premium
+              finishing, and dependable engineering.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
@@ -71,70 +266,101 @@ export default function AboutPage() {
                 <Link href="/">Back to home</Link>
               </Button>
             </div>
-          </div>
+          </Reveal>
+
+          {/* signal graphic — signature motif, echoed again in the timeline spine */}
+          <Reveal delay={120} className="flex items-center justify-center">
+            <svg
+              viewBox="0 0 320 220"
+              className="h-auto w-full max-w-sm text-blue"
+              fill="none"
+            >
+              <line x1="0" y1="110" x2="320" y2="110" stroke="currentColor" strokeOpacity="0.15" />
+              <path
+                d="M0 110 L60 110 L80 40 L100 180 L120 60 L140 150 L160 110 L320 110"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinejoin="round"
+                strokeLinecap="round"
+              />
+              <circle cx="160" cy="110" r="4" fill="currentColor" />
+            </svg>
+          </Reveal>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-[92rem] gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="rounded-[2rem] border border-black/8 bg-white p-8 shadow-[0_18px_70px_rgba(11,11,11,0.06)]">
-            <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-dark text-white">
-              <Sparkles className="h-5 w-5" />
-            </div>
-            <h2 className="font-display text-3xl font-semibold tracking-[-0.06em]">
-              Built around modern hygiene expectations
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-dark/62">
-              Every product is selected with one goal in mind: create washroom
-              environments that are easier to use, cleaner to maintain, and
-              better suited to high-traffic commercial needs.
+        {/* sectors served — factual, not decorative */}
+        <Reveal delay={200} className="mx-auto mt-16 max-w-[92rem]">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-dark/10 pt-6">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-dark/40">
+              Where AVHI systems run
+            </span>
+            {sectors.map((sector) => (
+              <span key={sector} className="text-sm text-dark/55">
+                {sector}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Pillars */}
+      <section className="border-b border-dark/10 px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
+        <div className="mx-auto max-w-[92rem]">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue">
+              What guides the work
             </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-3">
-            {pillars.map((pillar) => (
-              <div
-                key={pillar.title}
-                className="rounded-[2rem] border border-black/8 bg-[linear-gradient(145deg,#FFFFFF,#F4F6FA)] p-6 shadow-[0_16px_60px_rgba(11,11,11,0.05)]"
-              >
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-blue/10 text-blue">
-                  {pillar.title === "Premium quality" ? (
-                    <ShieldCheck className="h-5 w-5" />
-                  ) : pillar.title === "Reliable support" ? (
-                    <Wrench className="h-5 w-5" />
-                  ) : (
-                    <Sparkles className="h-5 w-5" />
-                  )}
+          </Reveal>
+          <div className="mt-10 grid gap-x-10 gap-y-10 sm:grid-cols-3">
+            {pillars.map((pillar, i) => (
+              <Reveal key={pillar.title} delay={i * 100}>
+                <div className="border-t border-dark/15 pt-6">
+                  <h3 className="font-display text-xl font-semibold tracking-[-0.03em]">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-dark/55">
+                    {pillar.description}
+                  </p>
                 </div>
-                <h3 className="font-display text-2xl font-semibold tracking-[-0.05em]">
-                  {pillar.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-dark/62">
-                  {pillar.description}
-                </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
+      </section>
 
-        <div className="mx-auto mt-16 max-w-[92rem] rounded-[2rem] border border-black/8 bg-[linear-gradient(145deg,#F7F8FB,#FFFFFF)] p-8 shadow-[0_18px_70px_rgba(11,11,11,0.05)] sm:p-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue">
-            Our journey
-          </p>
-          <h2 className="mt-4 font-display text-[clamp(2.4rem,4.6vw,3.2rem)] font-semibold leading-[0.9] tracking-[-0.06em]">
-            From focused beginnings to trusted commercial support.
-          </h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {journey.map((item) => (
-              <div key={item.title} className="rounded-[1.6rem] border border-black/8 bg-white/80 p-6">
-                <h3 className="font-display text-2xl font-semibold tracking-[-0.05em] text-dark">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-dark/62">
-                  {item.description}
-                </p>
-              </div>
+      {/* Timeline */}
+      <section className="px-5 py-4 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-[92rem]">
+          <Reveal className="pt-12">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue">
+              Timeline
+            </p>
+            <h2 className="mt-4 max-w-2xl font-display text-[clamp(2rem,3.6vw,2.8rem)] font-semibold leading-[1] tracking-[-0.05em]">
+              Four years, one focus.
+            </h2>
+          </Reveal>
+
+          <div className="mt-4">
+            {timeline.map((item, i) => (
+              <TimelineRow key={item.year} item={item} index={i} />
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Closing CTA */}
+      <section className="border-t border-dark/10 px-5 py-20 sm:px-8 lg:px-12">
+        <Reveal className="mx-auto flex max-w-[92rem] flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+          <h2 className="max-w-xl font-display text-[clamp(1.8rem,3vw,2.4rem)] font-semibold leading-[1.05] tracking-[-0.05em]">
+            Ready to see the current range?
+          </h2>
+          <Button asChild size="lg">
+            <Link href="/products">
+              Explore product categories
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </Reveal>
       </section>
     </main>
   );
