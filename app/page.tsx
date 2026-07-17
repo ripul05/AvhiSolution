@@ -302,14 +302,14 @@ function HeroPlaceholder({
   y: MotionValue<number>;
 }) {
   return (
-    <div className="relative h-[42rem] overflow-hidden rounded-[2rem] border border-white/70 bg-white/50 shadow-[0_40px_140px_rgba(11,11,11,0.16)] backdrop-blur-2xl sm:h-[48rem] lg:absolute lg:inset-y-0 lg:left-0 lg:right-[-5vw] lg:h-auto lg:rounded-[2.6rem]">
+    <div className="relative h-[30rem] overflow-hidden rounded-[1.5rem] border border-white/70 bg-white/50 shadow-[0_40px_140px_rgba(11,11,11,0.16)] backdrop-blur-2xl sm:h-[42rem] sm:rounded-[2rem] lg:absolute lg:inset-y-0 lg:left-0 lg:right-[-5vw] lg:h-auto lg:rounded-[2.6rem]">
       {/* Background */}
       <motion.div
         style={{ scale, y }}
-        className="absolute inset-0 rounded-[2.6rem] bg-[radial-gradient(circle_at_28%_24%,rgba(255,255,255,0.96),rgba(255,255,255,0.22)_28%,transparent_46%),radial-gradient(circle_at_74%_18%,rgba(14,79,255,0.18),transparent_34%),radial-gradient(circle_at_72%_78%,rgba(255,138,0,0.16),transparent_30%),linear-gradient(145deg,#F8FAFF,#ECEFF5_45%,#FFFFFF)]"
+        className="absolute inset-0 rounded-[1.5rem] bg-[radial-gradient(circle_at_28%_24%,rgba(255,255,255,0.96),rgba(255,255,255,0.22)_28%,transparent_46%),radial-gradient(circle_at_74%_18%,rgba(14,79,255,0.18),transparent_34%),radial-gradient(circle_at_72%_78%,rgba(255,138,0,0.16),transparent_30%),linear-gradient(145deg,#F8FAFF,#ECEFF5_45%,#FFFFFF)] sm:rounded-[2.6rem]"
       />
 
-      <div className="absolute inset-4 overflow-hidden rounded-[2rem] border border-black/8 bg-white/40">
+      <div className="absolute inset-3 overflow-hidden rounded-[1.25rem] border border-black/8 bg-white/40 sm:inset-4 sm:rounded-[2rem]">
 
         {/* Image Card */}
         <motion.div
@@ -319,10 +319,10 @@ function HeroPlaceholder({
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute left-[6%] top-[5%] h-[46%] w-[88%] overflow-hidden rounded-[2rem] border border-white/70 bg-white shadow-[0_35px_110px_rgba(11,11,11,0.14)] backdrop-blur-xl sm:h-[52%] lg:left-[8%] lg:top-[9%] lg:h-[78%] lg:w-[56%] lg:rounded-[2.4rem]"
+          className="absolute left-[6%] top-[5%] h-[42%] w-[88%] overflow-hidden rounded-[1.5rem] border border-white/70 bg-white shadow-[0_35px_110px_rgba(11,11,11,0.14)] backdrop-blur-xl sm:h-[52%] sm:rounded-[2rem] lg:left-[8%] lg:top-[9%] lg:h-[78%] lg:w-[56%] lg:rounded-[2.4rem]"
         >
-          {/* Browser Bar */}
-          <div className="absolute inset-x-0 top-0 z-20 flex h-10 items-center gap-2 border-b border-black/5 bg-white/80 px-5 backdrop-blur">
+          {/* Browser Bar — desktop chrome only, hidden on mobile so it doesn't sit over the logo */}
+          <div className="absolute inset-x-0 top-0 z-20 hidden h-10 items-center gap-2 border-b border-black/5 bg-white/80 px-5 backdrop-blur lg:flex">
             <div className="h-3 w-3 rounded-full bg-red-400" />
             <div className="h-3 w-3 rounded-full bg-yellow-400" />
             <div className="h-3 w-3 rounded-full bg-green-400" />
@@ -347,7 +347,7 @@ function HeroPlaceholder({
               width={280}
               height={280}
               priority
-              className="h-auto w-[70%] max-w-[260px] object-contain"
+              className="h-auto w-[55%] max-w-[180px] object-contain sm:w-[70%] sm:max-w-[260px]"
             />
           </div>
         </motion.div>
@@ -360,22 +360,22 @@ function HeroPlaceholder({
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute bottom-6 left-1/2 w-[88%] -translate-x-1/2 rounded-[1.6rem] border border-white/10 bg-dark p-4 text-white shadow-[0_38px_120px_rgba(11,11,11,0.3)] sm:w-[80%] sm:p-5 lg:bottom-[10%] lg:left-auto lg:right-[8%] lg:h-[54%] lg:w-[42%] lg:translate-x-0 lg:rounded-[2rem]"
+          className="absolute bottom-4 left-1/2 w-[88%] -translate-x-1/2 rounded-[1.2rem] border border-white/10 bg-dark p-3 text-white shadow-[0_38px_120px_rgba(11,11,11,0.3)] sm:bottom-6 sm:w-[80%] sm:rounded-[1.6rem] sm:p-5 lg:bottom-[10%] lg:left-auto lg:right-[8%] lg:h-[54%] lg:w-[42%] lg:translate-x-0 lg:rounded-[2rem]"
         >
-          <div className="mb-6 flex items-center justify-between">
-            <span className="text-xs uppercase tracking-[0.22em] text-white/38">
+          <div className="mb-3 flex items-center justify-between sm:mb-6">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-white/38 sm:text-xs sm:tracking-[0.22em]">
               Sensor Suite
             </span>
 
-            <Waves className="h-5 w-5 text-orange" />
+            <Waves className="h-4 w-4 text-orange sm:h-5 sm:w-5" />
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {highlights.map((item, index) => (
               <div
                 key={item}
                 className={cn(
-                  "rounded-2xl border border-white/10 px-4 py-3 text-sm text-white/70 transition-all",
+                  "truncate rounded-xl border border-white/10 px-3 py-2 text-xs text-white/70 transition-all sm:rounded-2xl sm:px-4 sm:py-3 sm:text-sm",
                   index === 1 && "bg-blue text-white shadow-glass",
                 )}
               >
@@ -386,10 +386,10 @@ function HeroPlaceholder({
         </motion.div>
 
         {/* Bottom Caption */}
-        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-white/90 via-white/60 to-transparent px-6 pb-6 pt-24 lg:px-8 lg:pb-8">
+        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-white/90 via-white/60 to-transparent px-4 pb-4 pt-14 sm:px-6 sm:pb-6 sm:pt-24 lg:px-8 lg:pb-8">
           <div>
-            <p className="font-display text-xl font-semibold tracking-[-0.05em] sm:text-2xl lg:text-3xl">
-              Premium washroom automation visual
+            <p className="font-display text-lg font-semibold tracking-[-0.04em] sm:text-2xl lg:text-3xl">
+              Our Story
             </p>
           </div>
 
@@ -399,10 +399,10 @@ function HeroPlaceholder({
         </div>
       </div>
 
-      {/* Floating Blur Effects */}
+      {/* Floating Blur Effects — scaled down and toned back on mobile so they don't dominate a small viewport */}
       <motion.div
         animate={{
-          opacity: [0.4, 0.75, 0.4],
+          opacity: [0.3, 0.6, 0.3],
           scale: [1, 1.08, 1],
         }}
         transition={{
@@ -410,12 +410,12 @@ function HeroPlaceholder({
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute right-[13%] top-[12%] h-24 w-24 rounded-full bg-blue/15 blur-2xl"
+        className="absolute right-[10%] top-[8%] h-14 w-14 rounded-full bg-blue/15 blur-xl sm:right-[13%] sm:top-[12%] sm:h-24 sm:w-24 sm:blur-2xl"
       />
 
       <motion.div
         animate={{
-          opacity: [0.35, 0.65, 0.35],
+          opacity: [0.25, 0.5, 0.25],
           scale: [1, 1.15, 1],
         }}
         transition={{
@@ -423,7 +423,7 @@ function HeroPlaceholder({
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-[16%] left-[16%] h-28 w-28 rounded-full bg-orange/15 blur-2xl"
+        className="absolute bottom-[12%] left-[12%] h-16 w-16 rounded-full bg-orange/15 blur-xl sm:bottom-[16%] sm:left-[16%] sm:h-28 sm:w-28 sm:blur-2xl"
       />
     </div>
   );
@@ -780,25 +780,35 @@ function PremiumSystems() {
   return (
     <section className="px-5 pb-8 sm:px-8 lg:px-12">
       <motion.div
-        initial={{ opacity: 0, scale: 0.97 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        className="mx-auto max-w-[92rem] rounded-[2.5rem] bg-dark p-8 text-white shadow-[0_40px_160px_rgba(11,11,11,0.28)] sm:p-12 lg:p-16"
+        transition={{ duration: 0.8 }}
+        className="mx-auto max-w-[92rem] rounded-[2.5rem] border border-white/10 bg-dark p-8 text-white shadow-[0_30px_120px_rgba(11,11,11,0.24)] sm:p-12 lg:p-16"
       >
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <div>
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-orange">
-              Premium hygiene systems
-            </p>
-            <h2 className="max-w-5xl font-display text-[clamp(3.4rem,7vw,7rem)] font-semibold leading-[0.88] tracking-[-0.07em]">
-              Touch-free performance for high-traffic commercial spaces.
-            </h2>
-          </div>
-          <p className="max-w-xl text-lg leading-8 text-white/58">
-            Sensor-led products, restroom automation, and hygiene equipment
-            specified for durability, elegance, and effortless maintenance.
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-orange">
+          Premium hygiene systems
+        </p>
+
+        <div className="mt-8 max-w-4xl">
+          <h2 className="font-display text-[clamp(2.2rem,4vw,3.8rem)] font-semibold leading-[1] tracking-[-0.05em]">
+            Built for spaces where reliability matters.
+          </h2>
+
+          <p className="mt-6 max-w-2xl text-base leading-8 text-white/60">
+            Sensor-based washroom solutions engineered for commercial
+            environments — combining refined aesthetics, dependable
+            performance, and effortless maintenance.
           </p>
+        </div>
+
+        <div className="mt-12 h-px w-full bg-white/10" />
+
+        <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4 text-sm text-white/55">
+          <span>Touch-free automation</span>
+          <span>Premium finishes</span>
+          <span>Commercial durability</span>
+          <span>Easy maintenance</span>
         </div>
       </motion.div>
     </section>

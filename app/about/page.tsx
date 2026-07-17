@@ -285,22 +285,19 @@ export default function AboutPage() {
           </Reveal>
 
           {/* signal graphic — signature motif, echoed again in the timeline spine */}
-          <Reveal delay={120} className="flex items-center justify-center">
-            <svg
-              viewBox="0 0 320 220"
-              className="h-auto w-full max-w-sm text-blue"
-              fill="none"
-            >
-              <line x1="0" y1="110" x2="320" y2="110" stroke="currentColor" strokeOpacity="0.15" />
-              <path
-                d="M0 110 L60 110 L80 40 L100 180 L120 60 L140 150 L160 110 L320 110"
-                stroke="currentColor"
-                strokeWidth="1.75"
-                strokeLinejoin="round"
-                strokeLinecap="round"
+          <Reveal
+            delay={120}
+            className="relative flex items-center justify-center"
+          >
+            <div className="relative aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-[2rem] border border-dark/10 shadow-[0_40px_120px_rgba(0,0,0,0.12)]">
+              <Image
+                src="/about/AboutHeroImage.png"
+                alt="AVHI Solutions showroom"
+                fill
+                className="object-cover"
+                priority
               />
-              <circle cx="160" cy="110" r="4" fill="currentColor" />
-            </svg>
+            </div>
           </Reveal>
         </div>
 
