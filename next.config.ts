@@ -6,15 +6,15 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/favicon.ico",
-        destination: "/icon.svg",
+        destination: "/AvhiSolutionFavicon.png",
       },
       {
         source: "/apple-touch-icon.png",
-        destination: "/icon.svg",
+        destination: "/AvhiSolutionFavicon.png",
       },
       {
         source: "/apple-touch-icon-precomposed.png",
-        destination: "/icon.svg",
+        destination: "/AvhiSolutionFavicon.png",
       },
     ];
   },
