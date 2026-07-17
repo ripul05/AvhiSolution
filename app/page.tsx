@@ -331,7 +331,7 @@ function HeroPlaceholder({
           {/* Desktop Image */}
           <div className="relative hidden h-full w-full lg:block">
             <Image
-              src="/AvhiSolutionHome.png"
+              src="/AvhiSolutionHome.webp"
               alt="AVHI Solutions Website"
               fill
               priority
@@ -342,7 +342,7 @@ function HeroPlaceholder({
           {/* Mobile Logo */}
           <div className="relative flex h-full w-full items-center justify-center lg:hidden">
             <Image
-              src="/AvhiSolutions.jpeg"
+              src="/AvhiSolutions.webp"
               alt="AVHI Solutions"
               width={280}
               height={280}

@@ -55,7 +55,7 @@ const timeline = [
     description:
       "AVHI begins with a narrow thesis: commercial hygiene hardware should feel as precise and considered as the buildings it goes into. The first sensor fittings ship to early clients in offices and hospitality.",
     icon: Sparkles,
-    image: "/timeLine/TimeLine2022.png",
+    image: "/timeLine/TimeLine2022.webp",
   },
   {
     year: "2023",
@@ -64,7 +64,7 @@ const timeline = [
     description:
       "The catalogue grows from individual fittings into a full ecosystem — sensor taps, flush valves, soap and sanitiser dispensers, and hand dryers — engineered to work together across a single washroom.",
     icon: Boxes,
-    image: "/timeLine/TimeLine2023-1.png", // or TimeLine2023-2.png
+    image: "/timeLine/TimeLine2023-1.webp", // or TimeLine2023-2.webp
   },
   {
     year: "2024",
@@ -73,7 +73,7 @@ const timeline = [
     description:
       "AVHI moves beyond supplying components to delivering integrated restroom systems — specified, installed, and serviced end to end for hospitality, healthcare, and public-facing buildings.",
     icon: Building2,
-    image: "/timeLine/TimeLine2024.png",
+    image: "/timeLine/TimeLine2024.webp",
   },
   {
     year: "2025",
@@ -82,7 +82,7 @@ const timeline = [
     description:
       "Partnerships and service coverage extend across more cities, bringing AVHI systems to a wider range of commercial and industrial facilities nationwide.",
     icon: MapPinned,
-    image: "/timeLine/TimeLine2025.png",
+    image: "/timeLine/TimeLine2025.webp",
   },
   {
     year: "Next",
@@ -91,7 +91,7 @@ const timeline = [
     description:
       "Our story doesn't end here. AVHI Solutions continues to innovate, expand into new markets, and develop next-generation washroom automation solutions that redefine hygiene, reliability, and user experience.",
     icon: Radio,
-    image: "/timeLine/TimeLine2026Beyond.png",
+    image: "/timeLine/TimeLine2026Beyond.webp",
   },
 ];
 

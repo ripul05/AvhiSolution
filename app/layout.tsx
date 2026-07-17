@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description:
     "AVHI Solutions delivers premium commercial washroom automation, sensor solutions, and hygiene systems for modern facilities.",
   icons: {
-    icon: "/AvhiSolutionFavicon.png",
-    apple: "/AvhiSolutionFavicon.png",
+    icon: "/AvhiSolutionFavicon.webp",
+    apple: "/AvhiSolutionFavicon.webp",
   },
 };
 
