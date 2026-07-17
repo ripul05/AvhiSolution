@@ -14,6 +14,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
+import Image from "next/image";
 
 /* ------------------------------------------------------------------ */
 /*  Content                                                           */
@@ -54,7 +55,7 @@ const timeline = [
     description:
       "AVHI begins with a narrow thesis: commercial hygiene hardware should feel as precise and considered as the buildings it goes into. The first sensor fittings ship to early clients in offices and hospitality.",
     icon: Sparkles,
-    imageLabel: "Founding team / first product line",
+    image: "/timeLine/TimeLine2022.png",
   },
   {
     year: "2023",
@@ -63,7 +64,7 @@ const timeline = [
     description:
       "The catalogue grows from individual fittings into a full ecosystem — sensor taps, flush valves, soap and sanitiser dispensers, and hand dryers — engineered to work together across a single washroom.",
     icon: Boxes,
-    imageLabel: "Product ecosystem / catalogue shoot",
+    image: "/timeLine/TimeLine2023-1.png", // or TimeLine2023-2.png
   },
   {
     year: "2024",
@@ -72,7 +73,7 @@ const timeline = [
     description:
       "AVHI moves beyond supplying components to delivering integrated restroom systems — specified, installed, and serviced end to end for hospitality, healthcare, and public-facing buildings.",
     icon: Building2,
-    imageLabel: "Installation / site work",
+    image: "/timeLine/TimeLine2024.png",
   },
   {
     year: "2025",
@@ -81,16 +82,16 @@ const timeline = [
     description:
       "Partnerships and service coverage extend across more cities, bringing AVHI systems to a wider range of commercial and industrial facilities nationwide.",
     icon: MapPinned,
-    imageLabel: "Regional rollout / partner sites",
+    image: "/timeLine/TimeLine2025.png",
   },
   {
-    year: "2026",
-    tag: "Today",
-    title: "Built for what's next",
+    year: "Next",
+    tag: "The Journey Continues",
+    title: "Always moving forward",
     description:
-      "AVHI continues refining automation for high-traffic washrooms — the same focus as day one, applied to a growing list of offices, hotels, hospitals, airports, malls, and industrial facilities.",
+      "Our story doesn't end here. AVHI Solutions continues to innovate, expand into new markets, and develop next-generation washroom automation solutions that redefine hygiene, reliability, and user experience.",
     icon: Radio,
-    imageLabel: "Current showroom / latest range",
+    image: "/timeLine/TimeLine2026Beyond.png",
   },
 ];
 
@@ -188,20 +189,31 @@ function TimelineRow({
 
   return (
     <div className="relative">
-      {/* spine node — desktop only */}
+      {/* Timeline node */}
       <div className="absolute left-1/2 top-0 z-10 hidden -translate-x-1/2 md:block">
-        <div className="flex h-11 w-11 items-center justify-center rounded-full border border-dark/15 bg-white">
+        <div className="flex h-11 w-11 items-center justify-center rounded-full border border-dark/15 bg-white shadow-sm">
           <Icon className="h-4 w-4 text-blue" strokeWidth={1.75} />
         </div>
       </div>
 
-      <div className="grid items-center gap-8 border-t border-dark/10 py-14 md:grid-cols-2 md:gap-24 md:py-24">
+      <div className="grid items-center gap-8 border-t border-dark/10 py-10 sm:py-14 md:grid-cols-2 md:gap-24 md:py-24">
+        {/* Image */}
         <div className={reversed ? "md:order-2" : ""}>
           <Reveal delay={80}>
-            <ImagePlaceholder label={item.imageLabel} />
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-dark/10 bg-[#f7f8fb] shadow-[0_16px_50px_rgba(11,11,11,0.08)]">
+              <Image
+                src={item.image}
+                alt={`${item.year} - ${item.title}`}
+                fill
+                className="object-contain p-3 transition-transform duration-500 sm:p-4"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority={index === 0}
+              />
+            </div>
           </Reveal>
         </div>
 
+        {/* Content */}
         <div className={reversed ? "md:order-1 md:text-right" : ""}>
           <Reveal delay={160}>
             <div
@@ -211,16 +223,20 @@ function TimelineRow({
             >
               <Icon className="h-4 w-4 text-blue" strokeWidth={1.75} />
             </div>
+
             <p className="font-display text-6xl font-semibold leading-none tracking-[-0.04em] text-dark/12 sm:text-7xl">
               {item.year}
             </p>
+
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-blue">
               {item.tag}
             </p>
+
             <h3 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-[-0.04em] text-dark sm:text-3xl">
               {item.title}
             </h3>
-            <p className="mt-4 max-w-md text-[0.95rem] leading-7 text-dark/60 md:ml-auto md:[unset]">
+
+            <p className="mt-4 max-w-md text-[0.95rem] leading-7 text-dark/60 md:ml-auto">
               {item.description}
             </p>
           </Reveal>

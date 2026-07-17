@@ -261,7 +261,7 @@ function HeroCopy() {
       <motion.h1
         initial={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        className="max-w-5xl font-display text-[clamp(3.8rem,8.6vw,8.7rem)] font-semibold leading-[0.82] tracking-[-0.075em]"
+        className="max-w-5xl font-display text-[clamp(2.4rem,6.8vw,4.8rem)] font-semibold leading-[0.82] tracking-[-0.075em]"
       >
         AVHI Solutions
       </motion.h1>
@@ -430,7 +430,7 @@ function HeroPlaceholder({
 }
 function WhyAvhi() {
   return (
-    <section id="solutions" className="relative px-5 py-24 sm:px-8 lg:px-12">
+    <section id="solutions" className="relative px-5 py-12 sm:py-20 sm:px-8 lg:px-12">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_18%,rgba(14,79,255,0.08),transparent_28%),radial-gradient(circle_at_88%_72%,rgba(255,138,0,0.08),transparent_30%)]" />
       <motion.div
         variants={stagger}
@@ -527,7 +527,7 @@ function AnimatedCounter({
 
 function EnvironmentStrip() {
   return (
-    <section className="px-5 py-20 sm:px-8 lg:px-12">
+    <section className="px-5 py-12 sm:py-16 sm:px-8 lg:px-12">
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -556,7 +556,7 @@ function EnvironmentStrip() {
 
 function ProductRange() {
   return (
-    <section id="products" className="relative px-5 py-28 sm:px-8 lg:px-12">
+    <section id="products" className="relative px-5 py-16 sm:py-20 sm:px-8 lg:px-12">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#FFFFFF_0%,#F7F8FB_42%,#FFFFFF_100%)]" />
       <motion.div
         variants={stagger}
@@ -607,7 +607,7 @@ function ProductCard({
   category,
   index,
 }: {
-  category: { name: string; description: string; image: string; };
+  category: { name: string; description: string; image: string };
   index: number;
 }) {
   return (
@@ -632,15 +632,12 @@ function ProductCard({
               sizes="(max-width:768px) 100vw, (max-width:1280px) 50vw, 33vw"
             />
 
-            {/* Dark gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
-            {/* Category Badge */}
             <div className="absolute left-5 top-5 rounded-full bg-white/90 px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-dark backdrop-blur-md">
               {category.name}
             </div>
 
-            {/* Arrow */}
             <div className="absolute bottom-5 right-5 grid h-10 w-10 place-items-center rounded-full bg-dark text-white shadow-[0_14px_38px_rgba(11,11,11,0.24)] transition-transform duration-500 group-hover:rotate-45">
               <ArrowUpRight className="h-4 w-4" />
             </div>
@@ -650,18 +647,14 @@ function ProductCard({
             <div className="mb-5 text-xs font-medium uppercase tracking-[0.18em] text-dark/34">
               {String(index + 1).padStart(2, "0")}
             </div>
+
             <h3 className="font-display text-3xl font-semibold tracking-[-0.06em] text-dark">
               {category.name}
             </h3>
             <p className="mt-4 flex-1 text-base leading-7 text-dark/58">
               {category.description}
             </p>
-            <Button
-              asChild
-              variant="secondary"
-              size="sm"
-              className="mt-8 w-fit bg-white/76"
-            >
+            <Button asChild variant="secondary" size="sm" className="mt-8 w-fit bg-white/76">
               <Link href="/products">
                 View Products
                 <ArrowUpRight className="h-3.5 w-3.5" />
@@ -693,7 +686,7 @@ function StoryTimeline() {
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-blue">
               Timeline
             </p>
-            <h2 className="font-display text-[clamp(4rem,9vw,9rem)] font-semibold leading-[0.82] tracking-[-0.08em]">
+            <h2 className="font-display text-[clamp(2rem,6vw,4rem)] font-semibold leading-[0.82] tracking-[-0.08em]">
               Our Story
             </h2>
           </div>
@@ -763,7 +756,7 @@ function StoryTimeline() {
                       !isReverse && "lg:ml-auto lg:text-right",
                     )}
                   >
-                    <p className="font-display text-[clamp(4rem,9vw,9rem)] font-semibold leading-none tracking-[-0.08em] text-dark">
+                    <p className="font-display text-[clamp(2.8rem,7vw,6rem)] font-semibold leading-none tracking-[-0.08em] text-dark">
                       {item.year}
                     </p>
                     <h3 className="mt-5 font-display text-4xl font-semibold tracking-[-0.06em] text-dark sm:text-5xl">
