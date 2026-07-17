@@ -159,10 +159,7 @@ function ImagePlaceholder({ label }: { label: string }) {
         backgroundSize: "18px 18px",
       }}
     >
-      {/*
-        Replace this block with:
-        <Image src="/images/about/2022.jpg" alt="..." fill className="object-cover" />
-      */}
+
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
         <ImageIcon className="h-6 w-6 text-dark/25" strokeWidth={1.5} />
         <p className="max-w-[14rem] text-[0.7rem] font-medium uppercase tracking-[0.14em] text-dark/35">
@@ -291,7 +288,7 @@ export default function AboutPage() {
           >
             <div className="relative aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-[2rem] border border-dark/10 shadow-[0_40px_120px_rgba(0,0,0,0.12)]">
               <Image
-                src="/about/AboutHeroImage.png"
+                src="/about/AboutHeroImage.webp"
                 alt="AVHI Solutions showroom"
                 fill
                 className="object-cover"

@@ -123,19 +123,19 @@ const productCategories = [
     name: "Sensor Faucets",
     description:
       "Touch-free faucet systems that bring elegance, durability, and efficient water control to modern spaces.",
-    image: "/img/sensorFaucets.jpeg",
+    image: "/img/sensorFaucets.webp",
   },
   {
     name: "Urinal Sensors",
     description:
       "Reliable automation solutions designed for cleaner, smarter, and more hygienic commercial washrooms.",
-    image: "/img/urinalSensors.jpeg",
+    image: "/img/urinalSensors.webp",
   },
   {
     name: "Automatic Soap Dispensers",
     description:
       "Premium dispensing systems that reduce touchpoints while elevating everyday hand hygiene standards.",
-    image: "/img/soapDispensers.jpeg",
+    image: "/img/soapDispensers.webp",
   },
 ];
 
