@@ -13,7 +13,7 @@ const footerLinks = [
 
 const contactDetails = [
   { icon: Mail, label: "avhisolutionsindia@gmail.com", href: "mailto:avhisolutionsindia@gmail.com" },
-  { icon: Phone, label: "+91 99993 73885", href: "tel:+919999373885" },
+  { icon: Phone, label: "+91 98993 87361", href: "tel:+919899387361" },
   { icon: MapPin, label: "New Delhi, India", href: undefined },
 ];
 
