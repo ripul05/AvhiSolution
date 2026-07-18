@@ -77,7 +77,7 @@ const categories: Category[] = [
       { code: "", name: "Urinal Sensor Adapter", image: "/img/products/urinalSensorAdapter_converted.webp" },
       { code: "UBB-05", name: "Battery Box", image: "/img/products/ubb05_converted.webp" },
       { code: "UBB-06", name: "Flat Battery Box", image: "/img/products/ubb06_converted.webp" },
-      { code: "UBB-08", name: "Battery Box", image: "/img/products/ubb08_converted.webp" },
+      { code: "UBB-08", name: "Battery Box", image: "/img/products/ubb08.webp" },
     ],
   },
   {
