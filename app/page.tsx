@@ -615,9 +615,13 @@ function ProductCard({
               {category.name}
             </div>
 
-            <div className="absolute bottom-4 right-4 grid h-9 w-9 place-items-center rounded-full bg-dark text-white shadow-[0_14px_38px_rgba(11,11,11,0.24)] transition-transform duration-500 group-hover:rotate-45 sm:bottom-5 sm:right-5 sm:h-10 sm:w-10">
+            <Link
+              href="/products"
+              aria-label={`View ${category.name} products`}
+              className="absolute bottom-4 right-4 grid h-9 w-9 place-items-center rounded-full bg-dark text-white shadow-[0_14px_38px_rgba(11,11,11,0.24)] transition-transform duration-500 hover:rotate-45 group-hover:rotate-45 sm:bottom-5 sm:right-5 sm:h-10 sm:w-10"
+            >
               <ArrowUpRight className="h-4 w-4" />
-            </div>
+            </Link>
           </div>
 
           <div className="flex flex-1 flex-col p-3.5 pt-6 sm:p-5 sm:pt-8">
