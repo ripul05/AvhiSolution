@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
+import WhatsAppButton from "@/components/common/whatsAppButton";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
           <div className="flex-1">{children}</div>
           <SiteFooter />
         </div>
+        <WhatsAppButton />
       </body>
     </html>
   );
