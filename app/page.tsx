@@ -121,18 +121,21 @@ const reasons = [
 const productCategories = [
   {
     name: "Sensor Faucets",
+    slug: "sensor-faucets",
     description:
       "Touch-free faucet systems that bring elegance, durability, and efficient water control to modern spaces.",
     image: "/img/sensorFaucets.webp",
   },
   {
     name: "Urinal Sensors",
+    slug: "urinal-sensors",
     description:
       "Reliable automation solutions designed for cleaner, smarter, and more hygienic commercial washrooms.",
     image: "/img/urinalSensors.webp",
   },
   {
     name: "Automatic Soap Dispensers",
+    slug: "automatic-soap-dispensers",
     description:
       "Premium dispensing systems that reduce touchpoints while elevating everyday hand hygiene standards.",
     image: "/img/soapDispensers.webp",
@@ -584,7 +587,7 @@ function ProductCard({
   category,
   index,
 }: {
-  category: { name: string; description: string; image: string };
+  category: { name: string; slug: string; description: string; image: string };
   index: number;
 }) {
   return (
@@ -616,7 +619,7 @@ function ProductCard({
             </div>
 
             <Link
-              href="/products"
+              href={`/products#${category.slug}`}
               aria-label={`View ${category.name} products`}
               className="absolute bottom-4 right-4 grid h-9 w-9 place-items-center rounded-full bg-dark text-white shadow-[0_14px_38px_rgba(11,11,11,0.24)] transition-transform duration-500 hover:rotate-45 group-hover:rotate-45 sm:bottom-5 sm:right-5 sm:h-10 sm:w-10"
             >
@@ -636,7 +639,7 @@ function ProductCard({
               {category.description}
             </p>
             <Button asChild variant="secondary" size="sm" className="mt-6 w-fit bg-white/76 sm:mt-8">
-              <Link href="/products">
+              <Link href={`/products#${category.slug}`}>
                 View Products
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
