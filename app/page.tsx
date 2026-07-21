@@ -79,45 +79,6 @@ const stats = [
   { label: "Customer Satisfaction", value: 100, suffix: "%" },
 ];
 
-const reasons = [
-  {
-    icon: Hand,
-    title: "Touch Free Technology",
-    description:
-      "Sensor-led operation reduces contact points and brings a cleaner, more intuitive experience to every restroom.",
-  },
-  {
-    icon: Leaf,
-    title: "Energy Efficient",
-    description:
-      "Smart activation helps control water, power, and consumable usage across high-traffic commercial spaces.",
-  },
-  {
-    icon: Factory,
-    title: "Commercial Grade",
-    description:
-      "Built for offices, hotels, hospitals, malls, airports, and industrial washrooms that work all day.",
-  },
-  {
-    icon: Gem,
-    title: "Premium Materials",
-    description:
-      "Refined finishes, durable surfaces, and clean detailing designed to elevate modern washroom interiors.",
-  },
-  {
-    icon: Clock3,
-    title: "Long Service Life",
-    description:
-      "Reliable components and robust engineering support consistent performance over years of daily use.",
-  },
-  {
-    icon: Wrench,
-    title: "Easy Maintenance",
-    description:
-      "Simple access, practical servicing, and facility-friendly systems keep upkeep smooth and predictable.",
-  },
-];
-
 const productCategories = [
   {
     name: "Sensor Faucets",
@@ -140,8 +101,14 @@ const productCategories = [
       "Premium dispensing systems that reduce touchpoints while elevating everyday hand hygiene standards.",
     image: "/img/soapDispensers.webp",
   },
+  {
+    name: "Spare Parts",
+    slug: "spare-parts",
+    description:
+      "Essential spare parts for sensor faucets, urinals, and hand dryers to keep your systems performing at their best.",
+    image: "/img/spareParts.webp",
+  },
 ];
-
 const timeline = [
   {
     year: "2022",
@@ -253,12 +220,12 @@ function HeroCopy() {
   return (
     <div className="relative z-10 text-center lg:text-left">
       <motion.div
-        initial={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        className="mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-dark/58 shadow-[0_12px_36px_rgba(11,11,11,0.06)] backdrop-blur-xl sm:mb-7 sm:text-xs"
+        initial={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dark shadow-sm sm:mb-7"
       >
         <Sparkles className="h-3.5 w-3.5 text-blue" />
-        Commercial hygiene, re-engineered
+        Premium Hygiene Systems
       </motion.div>
 
       <motion.h1
@@ -563,7 +530,7 @@ function ProductRange() {
           </p>
         </motion.div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {productCategories.map((category, index) => (
             <ProductCard
               key={category.name}

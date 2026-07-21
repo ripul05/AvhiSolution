@@ -46,7 +46,7 @@ const categories: Category[] = [
   },
   {
     title: "Urinal Sensor Eyes",
-    slug: "urinal-sensor-eyes",
+    slug: "spare-parts",
     coverImage: "/images/products/urinal-eye.jpg",
     description:
       "High-performance infrared sensor eyes compatible with various automatic urinal flushing systems.",
